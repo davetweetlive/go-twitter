@@ -1,5 +1,7 @@
 package twitter
 
+import "fmt"
+
 // A Demux receives interface{} messages individually or from a channel and
 // sends those messages to one or more outputs determined by the
 // implementation.
@@ -84,5 +86,6 @@ func (d SwitchDemux) Handle(message interface{}) {
 func (d SwitchDemux) HandleChan(messages <-chan interface{}) {
 	for message := range messages {
 		d.Handle(message)
+		fmt.Println("\n\n")
 	}
 }
